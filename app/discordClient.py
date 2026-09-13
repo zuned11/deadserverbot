@@ -2,6 +2,7 @@ import asyncio
 import logging
 
 import discord
+from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -12,9 +13,10 @@ logs = logging.getLogger(__name__)
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
-intents.guild_message = True
+# intents.guild_message = True
 
-bot = discord.ext.commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
+
 
 
 class ClientConnection(discord.Client):
@@ -36,7 +38,7 @@ class ClientConnection(discord.Client):
             await self.send_message_to_channel('pong', message.channel)
 
         #if message is !server prefix:
-            #!server status
+            #! server status
 
     async def send_message_to_channel(self, message: str, channel: discord.TextChannel):
         logs.info(f"sending message {message} to {channel}")

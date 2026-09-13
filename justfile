@@ -1,7 +1,7 @@
 # run into main
 run:
-		uv run main.py
+  uv run main.py
 
 #run tests
 test:
-		uv run pytest
+  uv run pytest
