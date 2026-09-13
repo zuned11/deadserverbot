@@ -1,12 +1,13 @@
-import discord
-from discord.ext import commands
-import random
+import logging
 import os
+
+import discord
 from dotenv import load_dotenv
 
 load_dotenv()
-token = os.getenv("TOKEN")
+token = os.getenv("DISCORD_TOKEN")
 
+handler = logging.FileHandler(filename='../logs/discord.log', encoding='utf-8', mode='a')
 
 #bot = commands.Bot(command_prefix='?', intents=intents)
 
@@ -22,7 +23,7 @@ class ClientConnection(discord.Client):
     async def on_message(self, message):
         print(f'received message: {message}')
         if message.author == self.user:
-            return
+            return #ignore messages sent by ourselves :)
 
         if message.content == 'ping':
             await message.channel.send('pong')

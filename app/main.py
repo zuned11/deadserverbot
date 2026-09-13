@@ -1,13 +1,22 @@
+import logging
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
-
-import logging
-
 log = logging.getLogger(__name__)
 
 def main():
-    logging.basicConfig(filename='../logs/app.log', level=logging.INFO)
+    log_level = logging.INFO
+    if os.getenv('LOGGING_LEVEL') == 'debug':
+        log_level = logging.DEBUG
+    logging.basicConfig(filename='../logs/app.log', level=log_level)
+
+    #initiate discord api
+
+    #initiate hetzner connection
+
+    #initiate game manager
 
 if __name__ == "__main__":
     main()
