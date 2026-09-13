@@ -13,7 +13,7 @@ logs = logging.getLogger('vikings')
 token = os.getenv("DISCORD_TOKEN")
 
 def start_logging():
-    config_file = pathlib.Path('log_config.json')
+    config_file = pathlib.Path('config_log.json')
     with open(config_file) as f_in:
         config = json.load(f_in)
     logging.config.dictConfig(config)
@@ -27,8 +27,6 @@ def main():
 
     client = ds.get_connection_from_env()
     client.run(token)
-    #testing
-    #client.
     #initiate hetzner connection
 
     #initiate game manager
