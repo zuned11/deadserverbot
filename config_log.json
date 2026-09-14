@@ -9,6 +9,7 @@
     "detailed": {
       "format": "[%(levelname)s|%(module)s|L%(lineno)d] %(asctime)s: %(message)s",
       "datefmt": "%Y-%m-%dT%H:%M:%S%z"
+    }
   },
   "handlers": {
     "stdout": {
@@ -24,16 +25,19 @@
     "file": {
       "class": "logging.handlers.RotatingFileHandler",
       "level": "DEBUG",
-      "formatter": "simple",
+      "formatter": "detailed",
       "filename": "logs/app.log",
-      "maxBytes": 100000,
-      "backupCount": 3
+      "maxBytes": 1000000,
+      "backupCount": 5,
+      "encoding": "utf-8"
+    }
   },
   "loggers": {
     "root": {
       "level": "DEBUG",
       "handlers": [
-        "stdout"
+        "stdout",
+        "file"
       ]
     }
   }
