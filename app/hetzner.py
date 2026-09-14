@@ -1,7 +1,7 @@
 import os
 
 from dotenv import load_dotenv
-from hcloud import Image, ServerType, Client
+from hcloud import Client, ServerType
 
 load_dotenv()
 
@@ -14,7 +14,7 @@ client = Client(
         )
 
 TARGET_SERVER_TYPE = os.getenv("TARGET_SERVER_TYPE") or ServerType(name="cx23")
-SSH_KEYS = client.
+#SSH_KEYS = client
 
 def get_server_instances():
         return client.servers.get_all()
@@ -24,3 +24,5 @@ def create_server():
                         name = 'valheim',
                        server_type=TARGET_SERVER_TYPE,
 ssh_keys=client.ssh_keys.get_all(),
+)
+

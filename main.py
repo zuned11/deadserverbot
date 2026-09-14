@@ -14,7 +14,7 @@ logs = logging.getLogger('vikings')
 token = os.getenv("DISCORD_TOKEN")
 
 def start_logging():
-    # RotatingFileHandler opens its file eagerly; the dir must exist first.
+    # RotatingFileHandler opens files eagerly; ensure exists first
     pathlib.Path('logs').mkdir(exist_ok=True)
     config_file = pathlib.Path('config_log.json')
     with open(config_file) as f_in:
@@ -23,7 +23,8 @@ def start_logging():
 
 def main():
     start_logging()
-    #initiate discord api
+
+    #initiate discord api 
     intents = ds.discord.Intents.none()
     intents.message_content = True
     intents.guild_messages = True
