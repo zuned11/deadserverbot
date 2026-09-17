@@ -27,3 +27,4 @@ def create_server():
         server_type=TARGET_SERVER_TYPE,
         ssh_keys=client.ssh_keys.get_all(),
     )
+    logs.debug(response)

@@ -14,10 +14,11 @@ description = """
 This bot provides basic functions to stand up and interact with a server running a game.
 """
 
+logs.debug("initializing intents")
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
-
+logs.debug('initializing bot commands')
 bot = commands.bot(command_prefix="!", description=description, intents=intents)
 
 
@@ -39,7 +40,7 @@ async def on_message(self, message):
         await self.send_message_to_channel("pong", message.channel)
 
     # if message is !server prefix:
-    #! server status
+    # ! server status
 
 
 async def send_message_to_channel(self, message: str, channel: discord.TextChannel):
